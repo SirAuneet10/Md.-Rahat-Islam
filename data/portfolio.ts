@@ -5,133 +5,121 @@ export const categories: CategoryInfo[] = [
   {
     type: CategoryType.FLYERS,
     label: 'Flyers',
-    description: 'High-impact promotional prints designed to capture attention instantly.',
+    description: 'High-impact promotional prints designed to capture attention instantly for businesses and events.',
     icon: 'FileText',
-    image: 'https://picsum.photos/seed/flyer/800/600'
+    image: 'https://images.unsplash.com/photo-1572044162444-ad60f128bde7?auto=format&fit=crop&q=80&w=800'
   },
   {
     type: CategoryType.BROCHURES,
     label: 'Brochures',
-    description: 'Professional multi-page layouts that tell your brand story effectively.',
+    description: 'Professional multi-page layouts that tell your complex brand story effectively.',
     icon: 'BookOpen',
-    image: 'https://picsum.photos/seed/brochure/800/600'
+    image: 'https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?auto=format&fit=crop&q=80&w=800'
   },
   {
     type: CategoryType.SOCIAL_MEDIA,
     label: 'Social Media',
-    description: 'Engagement-focused graphics for Instagram, Twitter, and LinkedIn.',
+    description: 'Engagement-focused graphics and campaign assets for major platforms.',
     icon: 'Share2',
-    image: 'https://picsum.photos/seed/social/800/600'
+    image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=800'
   },
   {
     type: CategoryType.THUMBNAILS,
     label: 'YouTube Thumbnails',
-    description: 'Click-optimized visual hooks for modern content creators.',
+    description: 'CTR-optimized visual hooks that drive growth for modern content creators.',
     icon: 'Youtube',
-    image: 'https://picsum.photos/seed/thumb/800/600'
+    image: 'https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?auto=format&fit=crop&q=80&w=800'
   },
   {
     type: CategoryType.POSTERS,
     label: 'Posters',
-    description: 'Cinematic and bold large-scale prints for events and marketing.',
+    description: 'Cinematic and bold large-scale prints for music, film, and corporate events.',
     icon: 'Image',
-    image: 'https://picsum.photos/seed/poster/800/600'
+    image: 'https://images.unsplash.com/photo-1544333346-6466736a5676?auto=format&fit=crop&q=80&w=800'
   },
   {
     type: CategoryType.INFOGRAPHICS,
     label: 'Infographics',
-    description: 'Complex data transformed into clear, digestible, and beautiful visuals.',
+    description: 'Complex data transformed into clear, digestible, and beautiful data visualizations.',
     icon: 'BarChart2',
-    image: 'https://picsum.photos/seed/info/800/600'
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800'
   },
   {
     type: CategoryType.BILLBOARDS,
     label: 'Billboards & Banners',
-    description: 'Large format outdoor advertising that commands presence.',
+    description: 'Large format outdoor advertising that commands presence in the physical world.',
     icon: 'Monitor',
-    image: 'https://picsum.photos/seed/billboard/800/600'
+    image: 'https://images.unsplash.com/photo-1581333100576-b73bbe92c22e?auto=format&fit=crop&q=80&w=800'
   },
   {
     type: CategoryType.AI_CONTENT,
     label: 'AI Content',
-    description: 'Cutting-edge AI visuals refined with human strategy and artistic taste.',
+    description: 'Cutting-edge AI visuals refined with human artistic taste and brand strategy.',
     icon: 'Zap',
-    image: 'https://picsum.photos/seed/ai/800/600'
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800'
   }
 ];
 
 export const projects: Project[] = [
   {
-    id: 'flyer-01',
-    title: 'Corporate Event Flyer',
+    id: 'behance-01',
+    title: 'Elite Club Night Flyer',
     category: CategoryType.FLYERS,
-    image: 'https://picsum.photos/seed/f1/1200/1600',
-    description: 'A modern, sleek flyer for a high-end corporate networking event.',
+    image: 'https://images.unsplash.com/photo-1571266028243-e4733b0f0bb1?auto=format&fit=crop&q=80&w=1200',
+    description: 'A high-energy, vibrant flyer designed for a luxury nightclub event in Dhaka. Focused on typography and depth.',
     tools: ['Photoshop', 'Illustrator'],
-    goal: 'Increase event registration by 25% through visual appeal.',
-    deliverables: ['Print-ready PDF', 'Social Media version'],
+    goal: 'Sold-out event within 48 hours of social media posting.',
+    deliverables: ['Social Post', 'Story Version', 'Print-ready PDF'],
     featured: true,
-    tags: ['Print', 'Corporate', 'Modern']
+    tags: ['Nightlife', 'Neon', 'Typography']
   },
   {
-    id: 'social-01',
-    title: 'Instagram Brand Campaign',
-    category: CategoryType.SOCIAL_MEDIA,
-    image: 'https://picsum.photos/seed/s1/1200/1200',
-    description: 'A cohesive set of 12 posts for a lifestyle fashion brand.',
-    tools: ['Photoshop', 'After Effects'],
-    goal: 'Maintain brand consistency across all digital touchpoints.',
-    deliverables: ['12 JPG posts', '3 Motion Reels'],
+    id: 'behance-02',
+    title: 'FinTech Corporate Brochure',
+    category: CategoryType.BROCHURES,
+    image: 'https://images.unsplash.com/photo-1515169067868-5387ec356754?auto=format&fit=crop&q=80&w=1200',
+    description: 'A minimal, data-driven tri-fold brochure for an emerging FinTech startup. Focused on clarity and professional trust.',
+    tools: ['InDesign', 'Illustrator'],
+    goal: 'Communicate complex API features to non-technical investors.',
+    deliverables: ['8-page Booklet', 'Interactive Digital PDF'],
     featured: true,
-    tags: ['Digital', 'Branding', 'Motion']
+    tags: ['Corporate', 'Minimal', 'B2B']
   },
   {
-    id: 'ai-01',
-    title: 'Cyberpunk Concept Art',
-    category: CategoryType.AI_CONTENT,
-    image: 'https://picsum.photos/seed/a1/1200/800',
-    description: 'AI-generated environment refined with digital painting for a tech brand.',
-    tools: ['Midjourney', 'Photoshop'],
-    goal: 'Create unique atmospheric visuals for a product launch.',
-    deliverables: ['High-res Concept Keyframe'],
-    featured: true,
-    tags: ['AI', 'Concept Art', 'Human-Refined']
-  },
-  {
-    id: 'thumb-01',
-    title: 'Tech Review Thumbnail',
+    id: 'behance-03',
+    title: 'Gaming Creator Thumbnail Pack',
     category: CategoryType.THUMBNAILS,
-    image: 'https://picsum.photos/seed/t1/1200/675',
-    description: 'High-CTR thumbnail for a major tech YouTuber.',
+    image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=1200',
+    description: 'Visual identity and high-CTR thumbnail system for a growing YouTube gaming channel.',
     tools: ['Photoshop'],
-    goal: 'Achieve >10% click-through rate.',
-    deliverables: ['WebP optimized thumbnail'],
+    goal: 'Increase channel average CTR from 4% to 12%.',
+    deliverables: ['Custom Templates', 'Channel Art'],
     featured: true,
-    tags: ['YouTube', 'Engagement']
+    tags: ['Gaming', 'YouTube', 'Engagement']
   },
   {
-    id: 'billboard-01',
-    title: 'Cookie Crumble Outdoor',
+    id: 'behance-04',
+    title: 'Neon Tokyo Concept Art',
+    category: CategoryType.AI_CONTENT,
+    image: 'https://images.unsplash.com/photo-1614728263952-84ea256f9679?auto=format&fit=crop&q=80&w=1200',
+    description: 'AI-generated atmosphere refined with manual digital painting to create a unique brand aesthetic.',
+    tools: ['Midjourney', 'Photoshop'],
+    goal: 'Create a unique social media hook that stands out from stock imagery.',
+    deliverables: ['Key Visuals', 'Campaign Assets'],
+    featured: true,
+    tags: ['AI-Driven', 'Futuristic', 'Branding']
+  },
+  {
+    id: 'behance-05',
+    title: 'Luxury Watch Outdoor Billboard',
     category: CategoryType.BILLBOARDS,
-    image: 'https://picsum.photos/seed/b1/1600/900',
-    description: 'Billboard design for a local bakery expansion.',
-    tools: ['Illustrator', 'Photoshop'],
-    goal: 'Drive foot traffic to the new store location.',
-    deliverables: ['Large Format Print File'],
+    image: 'https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&q=80&w=1200',
+    description: 'Large-scale advertising for a high-end horology brand. Focus on extreme detail and lighting.',
+    tools: ['Photoshop', 'Lightroom'],
+    goal: 'Drive awareness for a new seasonal collection launch.',
+    deliverables: ['Large Format Print File', 'Store Window Vinyl'],
     featured: true,
-    tags: ['Print', 'Outdoor']
-  },
-  {
-    id: 'info-01',
-    title: 'Market Trends Infographic',
-    category: CategoryType.INFOGRAPHICS,
-    image: 'https://picsum.photos/seed/i1/1200/1800',
-    description: 'A comprehensive visual breakdown of 2024 marketing trends.',
-    tools: ['Illustrator'],
-    goal: 'Simplify complex data for an executive presentation.',
-    deliverables: ['Vector PDF', 'Web SVG'],
-    featured: true,
-    tags: ['Data Viz', 'B2B']
+    tags: ['Luxury', 'Billboard', 'Retail']
   }
 ];
 

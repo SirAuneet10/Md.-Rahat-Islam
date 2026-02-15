@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { X, CheckCircle2, ChevronLeft, ChevronRight, Mail } from 'lucide-react';
 import { Project } from '../types';
 
@@ -9,6 +9,9 @@ interface LightboxProps {
 }
 
 const Lightbox: React.FC<LightboxProps> = ({ project, onClose }) => {
+  const [activeImage, setActiveImage] = useState(project.image);
+  const gallery = [project.image, ...(project.gallery || [])];
+
   // Prevent scrolling when open
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -27,12 +30,29 @@ const Lightbox: React.FC<LightboxProps> = ({ project, onClose }) => {
       </button>
 
       {/* Image Area */}
-      <div className="flex-1 relative overflow-auto p-4 md:p-12 flex items-center justify-center">
-        <img 
-          src={project.image} 
-          alt={project.title} 
-          className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
-        />
+      <div className="flex-1 relative overflow-hidden flex flex-col bg-[#050505]">
+        <div className="flex-1 p-4 md:p-12 flex items-center justify-center overflow-auto scrollbar-hide">
+          <img 
+            src={activeImage} 
+            alt={project.title} 
+            className="max-w-full max-h-full object-contain rounded-lg shadow-2xl animate-in zoom-in-95 duration-500"
+          />
+        </div>
+        
+        {/* Thumbnails Strip */}
+        {gallery.length > 1 && (
+          <div className="h-24 bg-[#111114]/50 border-t border-[#23232A] flex items-center justify-center space-x-4 px-6 overflow-x-auto">
+            {gallery.map((img, idx) => (
+              <button 
+                key={idx}
+                onClick={() => setActiveImage(img)}
+                className={`w-16 h-16 rounded-lg overflow-hidden border-2 transition-all shrink-0 ${activeImage === img ? 'border-[#FFD400] scale-110 shadow-[0_0_15px_rgba(255,212,0,0.3)]' : 'border-transparent opacity-50 hover:opacity-100'}`}
+              >
+                <img src={img} className="w-full h-full object-cover" alt="" />
+              </button>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Details Drawer */}
@@ -43,7 +63,7 @@ const Lightbox: React.FC<LightboxProps> = ({ project, onClose }) => {
               Project Details
             </span>
             <h2 className="text-3xl font-bold text-[#F4F4F5] mb-2">{project.title}</h2>
-            <p className="text-[#A0A0AA]">{project.description}</p>
+            <p className="text-[#A0A0AA] leading-relaxed">{project.description}</p>
           </header>
 
           <section className="space-y-4">

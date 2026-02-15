@@ -2,25 +2,23 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ArrowRight, Star, Clock, Trophy, ExternalLink, Zap } from 'lucide-react';
-import { projects, categories } from '../data/portfolio';
+import { usePortfolio } from '../context/PortfolioContext';
 import ProjectCard from '../components/ProjectCard';
 import Lightbox from '../components/Lightbox';
 import { Project } from '../types';
 
 const Home: React.FC = () => {
+  const { projects, categories } = usePortfolio();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const navigate = useNavigate();
   const featuredProjects = projects.filter(p => p.featured).slice(0, 6);
 
   return (
     <div className="space-y-32 pb-32">
       {/* Hero Section */}
       <section className="relative pt-24 lg:pt-32 px-6 overflow-hidden">
-        {/* Abstract background glow */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[500px] bg-[#FFD400]/5 blur-[120px] pointer-events-none rounded-full" />
         
         <div className="max-w-7xl mx-auto text-center">
-          {/* Upwork Credibility Pill */}
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-[#111114] border border-[#23232A] mb-12 animate-in slide-in-from-bottom-4 duration-500">
             <span className="flex items-center text-[#FFD400] text-xs font-bold tracking-widest uppercase mr-4">
               <Trophy size={14} className="mr-2" /> Rising Talent
@@ -66,7 +64,7 @@ const Home: React.FC = () => {
           <div className="space-y-4">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Best <span className="text-[#FFD400]">Work</span></h2>
             <p className="text-[#A0A0AA] max-w-xl">
-              A curated selection of high-performance visuals across flyers, social media, and billboards.
+              A curated selection of high-performance visuals from my latest portfolio on Behance.
             </p>
           </div>
           <Link to="/work" className="group flex items-center text-[#FFD400] font-bold tracking-widest uppercase text-sm">
@@ -79,10 +77,7 @@ const Home: React.FC = () => {
             <ProjectCard 
               key={project.id} 
               project={project} 
-              onClick={() => {
-                // Instead of navigation immediately, we might want to stay on home and open lightbox
-                setSelectedProject(project);
-              }}
+              onClick={() => setSelectedProject(project)}
             />
           ))}
         </div>
@@ -90,7 +85,7 @@ const Home: React.FC = () => {
 
       {/* AI Content Strip */}
       <section className="bg-[#111114] border-y border-[#23232A] py-24 relative overflow-hidden">
-        <div className="absolute top-0 right-0 p-12 opacity-5">
+        <div className="absolute top-0 right-0 p-12 opacity-5 pointer-events-none">
            <Zap size={300} className="text-[#FFD400]" />
         </div>
         <div className="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-16">
@@ -146,7 +141,6 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* External Links / Social Proof */}
       <section className="max-w-7xl mx-auto px-6 py-12">
         <div className="bg-[#111114] border border-[#23232A] rounded-3xl p-12 flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="text-center md:text-left space-y-2">
@@ -174,7 +168,6 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="max-w-4xl mx-auto px-6 text-center">
         <h2 className="text-4xl md:text-6xl font-bold mb-8 leading-tight">Ready to boost your <span className="text-[#FFD400]">brand visuals?</span></h2>
         <Link

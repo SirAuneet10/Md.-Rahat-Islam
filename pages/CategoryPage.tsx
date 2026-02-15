@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { projects, categories } from '../data/portfolio';
+import { usePortfolio } from '../context/PortfolioContext';
 import ProjectCard from '../components/ProjectCard';
 import Lightbox from '../components/Lightbox';
 import { Project, CategoryType } from '../types';
@@ -9,13 +9,13 @@ import { ChevronLeft, Filter } from 'lucide-react';
 
 const CategoryPage: React.FC = () => {
   const { categoryId } = useParams<{ categoryId: string }>();
+  const { projects, categories } = usePortfolio();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [activeFilter, setActiveFilter] = useState('All');
 
   const category = categories.find(c => c.type === categoryId);
   const categoryProjects = projects.filter(p => p.category === categoryId);
 
-  // Derive unique tags for filtering
   const allTags = ['All', ...Array.from(new Set(categoryProjects.flatMap(p => p.tags)))];
 
   const filteredProjects = activeFilter === 'All' 
@@ -47,7 +47,6 @@ const CategoryPage: React.FC = () => {
         </div>
       </header>
 
-      {/* Filters */}
       <div className="flex items-center space-x-6 overflow-x-auto pb-4 scrollbar-hide">
         <div className="flex items-center text-[#F4F4F5] font-bold text-sm uppercase tracking-widest mr-4">
           <Filter size={14} className="mr-2 text-[#FFD400]" /> Filter:
@@ -69,7 +68,6 @@ const CategoryPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {filteredProjects.length > 0 ? (
           filteredProjects.map(project => (

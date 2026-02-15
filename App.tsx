@@ -10,6 +10,8 @@ import AIContent from './pages/AIContent';
 import About from './pages/About';
 import Resume from './pages/Resume';
 import Contact from './pages/Contact';
+import Admin from './pages/Admin';
+import { PortfolioProvider } from './context/PortfolioContext';
 
 const App: React.FC = () => {
   const { pathname } = useLocation();
@@ -19,21 +21,24 @@ const App: React.FC = () => {
   }, [pathname]);
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#0B0B0D]">
-      <Navbar />
-      <main className="flex-grow">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/work" element={<WorkHub />} />
-          <Route path="/work/ai-content" element={<AIContent />} />
-          <Route path="/work/:categoryId" element={<CategoryPage />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/resume" element={<Resume />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </main>
-      <Footer />
-    </div>
+    <PortfolioProvider>
+      <div className="flex flex-col min-h-screen bg-[#0B0B0D]">
+        <Navbar />
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/work" element={<WorkHub />} />
+            <Route path="/work/ai-content" element={<AIContent />} />
+            <Route path="/work/:categoryId" element={<CategoryPage />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/resume" element={<Resume />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/admin" element={<Admin />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </PortfolioProvider>
   );
 };
 

@@ -1,11 +1,13 @@
 
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ExternalLink } from 'lucide-react';
+import { Menu, X, ExternalLink, Settings } from 'lucide-react';
+import { usePortfolio } from '../context/PortfolioContext';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { pathname } = useLocation();
+  const { isAdmin } = usePortfolio();
 
   const navLinks = [
     { name: 'Home', path: '/' },
@@ -22,7 +24,6 @@ const Navbar: React.FC = () => {
     <nav className="sticky top-0 z-50 bg-[#0B0B0D]/90 backdrop-blur-md border-b border-[#23232A]">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="flex justify-between items-center h-20">
-          {/* Logo */}
           <Link to="/" className="group flex flex-col">
             <span className="text-xl font-bold tracking-tight text-[#F4F4F5] group-hover:text-[#FFD400] transition-colors">
               Md. Rahat Islam
@@ -32,7 +33,6 @@ const Navbar: React.FC = () => {
             </span>
           </Link>
 
-          {/* Desktop Nav */}
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
               <Link
@@ -45,6 +45,15 @@ const Navbar: React.FC = () => {
                 {link.name}
               </Link>
             ))}
+            
+            <Link
+              to="/admin"
+              className={`p-2 transition-colors ${isAdmin ? 'text-[#FFD400]' : 'text-[#23232A] hover:text-[#A0A0AA]'}`}
+              title="Admin Panel"
+            >
+              <Settings size={18} />
+            </Link>
+
             <Link
               to="/contact"
               className="bg-[#FFD400] text-[#0B0B0D] px-6 py-2.5 rounded-full font-bold text-sm yellow-glow transition-all hover:-translate-y-0.5"
@@ -53,8 +62,10 @@ const Navbar: React.FC = () => {
             </Link>
           </div>
 
-          {/* Mobile Menu Toggle */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center space-x-4">
+             <Link to="/admin" className={isAdmin ? 'text-[#FFD400]' : 'text-[#23232A]'}>
+                <Settings size={20} />
+             </Link>
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 text-[#F4F4F5] hover:text-[#FFD400] transition-colors"
@@ -65,7 +76,6 @@ const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Drawer */}
       <div
         className={`fixed inset-0 z-40 bg-[#0B0B0D] transition-transform duration-300 ease-in-out ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
@@ -85,6 +95,13 @@ const Navbar: React.FC = () => {
             </Link>
           ))}
           <div className="pt-8 border-t border-[#23232A] space-y-6">
+            <Link
+              to="/admin"
+              onClick={() => setIsOpen(false)}
+              className="flex items-center text-[#A0A0AA] hover:text-[#FFD400] transition-colors"
+            >
+              Admin Dashboard <Settings size={16} className="ml-2" />
+            </Link>
             <a
               href="https://www.upwork.com/freelancers/~0199bfd60461bc5c31"
               target="_blank"
@@ -92,14 +109,6 @@ const Navbar: React.FC = () => {
               className="flex items-center text-[#A0A0AA] hover:text-[#FFD400] transition-colors"
             >
               Upwork Profile <ExternalLink size={16} className="ml-2" />
-            </a>
-            <a
-              href="https://www.behance.net/auneetislam19"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center text-[#A0A0AA] hover:text-[#FFD400] transition-colors"
-            >
-              Behance Portfolio <ExternalLink size={16} className="ml-2" />
             </a>
             <Link
               to="/contact"

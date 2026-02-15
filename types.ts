@@ -16,6 +16,7 @@ export interface Project {
   client?: string;
   category: CategoryType;
   image: string;
+  gallery?: string[]; // Added support for multiple images
   description: string;
   tools: string[];
   goal: string;
